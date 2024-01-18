@@ -1,0 +1,8 @@
+A;B;C
+B;A
+C;A;D
+D;C
+Z;Y;X
+X;Y;Z
+Y;X;Z;Q
+Q;Y

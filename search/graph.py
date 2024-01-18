@@ -21,43 +21,52 @@ class Graph:
         * If there is an end node input and a path does not exist, return None
 
         """
-        if end == None:
-            Q = []
-            visited = [ ]
-            Q.append(start)
-            visited.append(start)
-            while len(Q) > 0:
-                v = Q.pop(0)
-                N = self.graph.neighbors(v)
-                for w in N:
-                    if w not in visited:
-                        visited.append(w)
-                        Q.append(w)
-            return visited
-        
+        if self.graph.number_of_nodes() == 0:
+                raise(ValueError('No nodes present in graph.'))
+        elif start not in self.graph:
+            raise(KeyError(start + ' node not present in graph.'))
         else:
-            Q = []
-            visited = [ ]
-            parents = {}
-            parents[start] = None
-            shortest_path = []
-            Q.append(start)
-            visited.append(start)
-            while len(Q) > 0:
-                v = Q.pop(0)
-                N = self.graph.neighbors(v)
-                for w in N:
-                    if w not in visited:
-                        parents[w] = v
-                        visited.append(w)
-                        if w == end:
-                            shortest_path.append(w)
-                            while parents[w] != None:
-                                w = parents[w]
+            if end == None:
+                Q = []
+                visited = [ ]
+                Q.append(start)
+                visited.append(start)
+                while len(Q) > 0:
+                    v = Q.pop(0)
+                    N = self.graph.neighbors(v)
+                    for w in N:
+                        if w not in visited:
+                            visited.append(w)
+                            Q.append(w)
+                if len(visited) < self.graph.number_of_nodes():
+                    raise(ValueError('Graph is unconnected, all nodes could not be reached from ' + start + '.'))
+                return visited
+        
+            else:
+                if end not in self.graph:
+                    raise(KeyError(end + ' node not present in graph.'))
+                Q = []
+                visited = [ ]
+                parents = {}
+                parents[start] = None
+                shortest_path = []
+                Q.append(start)
+                visited.append(start)
+                while len(Q) > 0:
+                    v = Q.pop(0)
+                    N = self.graph.neighbors(v)
+                    for w in N:
+                        if w not in visited:
+                            parents[w] = v
+                            visited.append(w)
+                            if w == end:
                                 shortest_path.append(w)
-                            return shortest_path[::-1]
-                        Q.append(w)
-            return
+                                while parents[w] != None:
+                                    w = parents[w]
+                                    shortest_path.append(w)
+                                return shortest_path[::-1]
+                            Q.append(w)
+                return
 
 
 
