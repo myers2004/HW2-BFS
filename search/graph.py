@@ -21,8 +21,43 @@ class Graph:
         * If there is an end node input and a path does not exist, return None
 
         """
-        return
-
+        if end == None:
+            Q = []
+            visited = [ ]
+            Q.append(start)
+            visited.append(start)
+            while len(Q) > 0:
+                v = Q.pop(0)
+                N = self.graph.neighbors(v)
+                for w in N:
+                    if w not in visited:
+                        visited.append(w)
+                        Q.append(w)
+            return visited
+        
+        else:
+            Q = []
+            visited = [ ]
+            parents = {}
+            parents[start] = None
+            shortest_path = []
+            Q.append(start)
+            visited.append(start)
+            while len(Q) > 0:
+                v = Q.pop(0)
+                N = self.graph.neighbors(v)
+                for w in N:
+                    if w not in visited:
+                        parents[w] = v
+                        visited.append(w)
+                        if w == end:
+                            shortest_path.append(w)
+                            while parents[w] != None:
+                                w = parents[w]
+                                shortest_path.append(w)
+                            return shortest_path[::-1]
+                        Q.append(w)
+            return
 
 
 
