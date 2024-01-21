@@ -31,17 +31,11 @@ In test/test_bfs.py:
 * Write unit tests (in the test_bfs.py file) for your breadth first search
 * Replace these instructions with a brief description of bfs in your forked repo
 	
-* Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
+* Bredth-First Search (BFS)
 
-	See blogposts below on helping set up github actions with pytest:
-	
-	* [post 1](https://blog.dennisokeeffe.com/blog/2021-08-08-pytest-with-github-actions)
-	* [post 2](https://mattsegal.dev/pytest-on-github-actions.html)
-	* Add "! [BuildStatus] (https://github.com/ < your-github-username > /HW2-BFS/workflows/HW2-BFS/badge.svg?event=push)" (update link and remove spaces) to the beginning of your readme file
-	* Also refer to previous assignment for more in-depth help with GitHub actions
+	BFS searches througb a graph one layer at a time using a queue. This process starts from a source node and adds all of its neighbours into the queue (where the first item entered into the quene is the first out). Then bfs goes to the first node in the queue and adds all its neighbors into the end of the queue (unless the neighbor has already been visited by the search). This search method explores all pasths at once.
 
-	Ensure that the github actions complete the following:
-	* runs pytest
+	In a shortest path search, the previous node that led to the current visited node getting added to the queue is rembered. Then, once the target is reached, the path is traced backwards from the target. Since BFS searches one layer at a time, the first path to reach the target is inherently the shortest.
 
 # Getting Started
 To get started you will need to fork this repository onto your own github. You will then work on the code base from your own repo and make changes to it in the form of commits. 

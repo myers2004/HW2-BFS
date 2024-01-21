@@ -47,8 +47,8 @@ class Graph:
                     raise(KeyError(end + ' node not present in graph.'))
                 Q = []
                 visited = [ ]
-                parents = {}
-                parents[start] = None
+                prev = {}
+                prev[start] = None
                 shortest_path = []
                 Q.append(start)
                 visited.append(start)
@@ -57,12 +57,12 @@ class Graph:
                     N = self.graph.neighbors(v)
                     for w in N:
                         if w not in visited:
-                            parents[w] = v
+                            prev[w] = v
                             visited.append(w)
                             if w == end:
                                 shortest_path.append(w)
-                                while parents[w] != None:
-                                    w = parents[w]
+                                while prev[w] != None:
+                                    w = prev[w]
                                     shortest_path.append(w)
                                 return shortest_path[::-1]
                             Q.append(w)
