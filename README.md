@@ -1,7 +1,7 @@
 # Assignment 2
 Breadth-first search
 
-[![project2](https://github.com/myers2004/HW2-BFS/actions/workflows/test.yml/badge.svg)](https://github.com/myers2004/HW2-BFS/actions/workflows/test.yml)
+![BuildStatus](https://github.com/myers2004/HW2-BFS/actions/workflows/main.yml/badge.svg?event=push)
 
 # Assignment Overview
 The purpose of this assignment is to get you comfortable working with graph structures and to implement a breadth-first search function to traverse the graph and find the shortest path between nodes.
